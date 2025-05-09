@@ -1,16 +1,15 @@
-# Nerfies
+# FastCAV
 
-This is the repository that contains source code for the [Causal Rivers website](https://causalrivers.github.io).
+This is the repository that contains source code for the [FastCAV webpage](https://fastcav.github.io).
 
-If you find CausalRivers useful for your work please cite:
+If you find our work useful please cite:
 ```
-@inproceedings{
-2025causalrivers,
-title={CausalRivers - Scaling up benchmarking of causal discovery for real-world time-series},
-author={Gideon, Stein and Maha, Shadaydeh and Jan, Blunk and Niklas, Penzel and Joachim, Denzler},
-booktitle={The Thirteenth International Conference on Learning Representations},
-year={2025},
-url={https://openreview.net/forum?id=wmV4cIbgl6}
+@inproceedings{schmalwasser2025fastcav,
+title={FastCAV: Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks},
+author={Laines Schmalwasser and Niklas Penzel and Joachim Denzler and Julia Niebling},
+booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+year = {2025},
+url={}
 }
 ```
 
