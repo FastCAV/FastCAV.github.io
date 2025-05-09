@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta name="description" content="FastCAV: Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks">
+  <meta name="keywords" content="FastCAV, Concept-based Explanations, XAI, Explainability, TCAV">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FastCAV: Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks</title>
+
+  <link rel="icon" href="./static/images/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script defer src="./static/js/jquery-3.5.1.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/bulma-carousel.min.js"></script>
+  <script defer src="./static/js/bulma-slider.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/asver12">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://inf-cv.uni-jena.de/home/staff/">
+              Computer Vision Group Jena
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title"><b>FastCAV</b><br> <small>Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks</small></h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=04KokJcAAAAJ&hl=en">Laines Schmalwasser<sup><small>1,2</small></sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=s9bfMqEAAAAJ&hl=en">Niklas Penzel<sup><small>2</small></sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.de/citations?hl=en&user=bhpi3vgAAAAJ&hl=en">Joachim Denzler<sup><small>2</small></sup></a>
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=8cz423oAAAAJ&hl=en">Julia Niebling<sup><small>1</small></sup></a>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <sup><small>1</small></sup>: Institute of Data Science, German Aerospace Center, Jena, Germany
+              </span>
+              <span class="author-block">
+                <sup><small>2</small></sup>: Computer Vision Group Jena, Friedrich Schiller University Jena, Germany
+              </span>
+            </div>
+            <br>
+            <div class="is-size-5 publication-authors is-dark is">
+              <b>
+                ICML 2025
+              </b>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://icml.cc/virtual/2025/poster/44251" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="ARXIV-Link" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="GITLAB-Link" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href="https://github.com/CausalRivers/benchmark" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Experiments</span> -->
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <!-- Visual Effects. -->
+        <div class="column has-text-centered">
+          <div class="content">
+            <h2 class="title is-3">Abstract</h2>
+            <p style="font-size: 0.9rem;" class="is-centered">
+              <div class="content has-text-justified">
+              Concepts such as objects, patterns, and shapes are how humans understand the world. 
+              Building on this intuition, concept-based explainability methods aim to study representations learned by deep neural networks in relation to human-understandable concepts. 
+              Here, Concept Activation Vectors (CAVs) are an important tool and can identify whether a model learned a concept or not. 
+              However, the computational cost and time requirements of existing CAV computation pose a significant challenge, particularly in large-scale, high-dimensional architectures. 
+              To address this limitation, we introduce <strong>FastCAV</strong>, a novel approach that accelerates the extraction of CAVs by up to <strong>63.6× (on average 46.4×)</strong>. 
+              We provide a theoretical foundation for our approach and give concrete assumptions under which it is equivalent to established SVM-based methods. 
+              Our empirical results demonstrate that CAVs calculated with FastCAV maintain <strong>similar performance while being more efficient and stable</strong>. 
+              In downstream applications, i.e., concept-based explanation methods, we show that FastCAV can act as a replacement leading to equivalent insights. 
+              Hence, our approach enables previously infeasible investigations of deep models, which we demonstrate by tracking the evolution of concepts during model training.
+              </div>
+            </p>
+          </div>
+        </div>
+        <div class="column has-text-centered">
+          <h2 class="title is-3">Accelerate CAV-Extraction!</h2>
+          <div class="columns is-centered">
+            <div class="column content">
+              <div>&ensp;</div>
+              <div>&ensp;</div>
+              <img src="./static/images/teaser.png" class="interpolation-image" alt="Rivers in Bavaria" width="500" height="699" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Quantitative Comparison</h2>
+            <p class="content has-text-justified">
+              To empirically compare FastCAV with SVM-based computation, we evaluate a broad spectrum of model architectures trained on <a href="https://arxiv.org/abs/1409.0575">ImageNet</a>.
+              We split our investigation into four dimensions: computational time, accuracy, inter-method similarity, and intra-method robustness.
+            </p>
+            <img src="./static/images/table.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
+            <p class="content has-text-justified">
+              Comparing our approach FastCAV with SVM-based computation. <b>Bold values</b> indicate better results.
+              "N/A" indicates that no results were produced due to the overall computational time exceeding four days. 
+              More details can be found in our paper!
+            </p>
+          </div>
+        </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Qualitative Comparison</h2>
+            <p class="content has-text-justified">
+              FastCAV can act as a more efficient drop-in replacement for downstream applications of CAVs. 
+              Examples include Testing with Concept Activation Vectors <a href="https://arxiv.org/abs/1711.11279">(TCAV)</a> or Automatic Concept-based Explanations <a href="https://arxiv.org/abs/1902.03129">(ACE)</a>.
+            </p>
+
+            <h3 class="title is-4">Testing for Class Relevant Concepts with TCAV </h3>
+            <img src="./static/images/tcav.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
+            <p class="content has-text-justified">
+              TCAV scores for various <a href="https://arxiv.org/abs/1409.4842">GoogleNet</a> layers.
+              We compare the concepts "polka-dotted", "striped", and "zigzagged" for the class <i>ladybug</i> using FastCAV against the established SVM approach.
+              We mark CAVs that are not statistically significant with "*".
+              The insights into the GoogleNet model are consistent between both our approach and the SVM-based method.
+              Nevertheless, we observe <strong>lower standard deviations</strong> and <strong>faster computation speed</strong> for FastCAV.
+            </p>
+
+            <h3 class="title is-4">Automatic Concept Discovery with ACE </h3>
+            <img src="./static/images/ace.png" class="interpolation-image" alt="Interpolation end reference image." width="600" />
+            <p class="content has-text-justified">
+              Comparison of the most salient concepts discovered by ACE using either our FastCAV or the established SVM-CAV. 
+              Here, we use class <i>lionfish</i> and display the two most salient concepts. 
+              We find the discovered patches between both approaches <b>similar and congruent with the original observation</b> in <a href="https://arxiv.org/abs/1902.03129">(Ghorbani et al., 2019)</a>.
+            </p>
+          </div>
+        </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Tracking CAVs During Training Using FastCAV</h2>
+            <p class="content has-text-justified">
+              FastCAV enables previously infeasible analyses for models with high dimensional activation spaces. 
+              To show this, we train a <a href="https://arxiv.org/abs/1512.03385">ResNet50</a> on <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> from scratch and track the evolution of learned concepts during training.  
+            </p>
+            <img src="./static/images/training-ana.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
+            <p class="content has-text-justified">
+              We find the learning of concepts aligns with a simultaneous increase in predictive performance, suggesting that the model is learning to recognize and utilize relevant information for predictions.
+              We observe similar trends for specific concept examples, although the results exhibit increased variability across the training steps compared to the average across concepts.
+              Notably, we observe stark increases in average CAV accuracy after each epoch, where the learning rate is reduced during training.
+            </p>
+            <p class="content has-text-justified">
+              Furthermore, we observe that early and middle layers have a higher likelihood of learning textures compared to later layers, supporting previous findings (<a href="https://arxiv.org/abs/1711.11279">Kim et al., 2018</a>; <a href="https://arxiv.org/abs/1902.03129">Ghorbani et al., 2019</a>; <a href="https://arxiv.org/abs/1704.05796">Bau et al., 2017</a>). 
+              Our observations demonstrate that FastCAV can be used to study the learning dynamics of deep neural networks in a more fine-grained manner and for abstract concepts.
+            </p>
+          </div>
+        </div>
+  </section>
+  
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <p class="content has-text-justified">
+        If you find our work useful, please consider citing our paper!
+      </p>
+      <pre>
+      <code>
+      @inproceedings{schmalwasser2025fastcav,
+        title={FastCAV: Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks},
+        author={Laines Schmalwasser and Niklas Penzel and Joachim Denzler and Julia Niebling},
+        booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+        year = {2025},
+        url={}
+      }     
+      </code>
+      </pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://openreview.net/forum?id=wmV4cIbgl6">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/cvjena" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+              The source code of this site is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
+              We thank its creators for their work. 
+            </p>
+            All data sources fall under the <a href="https://www.govdata.de/dl-de/by-2-0">Data license Germany</a>.
+            <br><a rel="license" href="impressum_privacy.html">Impressum and Data privacy</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
