@@ -134,6 +134,28 @@ body {
 }
 
 
+.dlr-logo {
+  background-image: url("../images/DLR_Logo.svg");
+  width: 40px;  /* Adjust width and height as needed */
+  height: 40px;
+  display: inline-block; /* Important for background positioning */
+  background-size: contain; /* Or 'cover' or '100% 100%' */
+  background-repeat: no-repeat;
+  background-position: center; /* Often helpful */
+  /* border: 1px solid red; */
+}
+
+.cvg-logo {
+  background-image: url("../images/CVG_Logo.svg");
+  width: 45px;  /* Adjust width and height as needed */
+  height: 45px;
+  display: inline-block; /* Important for background positioning */
+  background-size: contain; /* Or 'cover' or '100% 100%' */
+  background-repeat: no-repeat;
+  background-position: center; /* Often helpful */
+  /* border: 1px solid red; */
+}
+
 .interpolation-panel .slider {
   margin: 0 !important;
 }
